@@ -1,1 +1,128 @@
-<!doctype html><html><head>    <meta charset="UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1">    <title>Registration</title>    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">    <link rel="stylesheet" href="style/app.css"></head><body data-ng-app="myApp" data-ng-controller="AppController as ctrl" data-ng-cloak><div class="container">    <div class="panel panel cont-top">        <div class="panel-heading cont-bl">            <span class="lead">User Registration Form </span>        </div>        <div class="form cont">            <form ng-submit="ctrl.submit()" name="myForm" class="form_cont">                <input type="hidden" ng-model="ctrl.user.id" />                <div class="row">                    <div class="form-group col-md-12">                        <label class="col-md-2 control-lable" for="name">Name</label>                        <div class="col-md-7 inp_ero">                            <input type="text" ng-model="ctrl.user.username" id="name" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>                        </div>                    </div>                </div>                <div class="row">                    <div class="form-group col-md-12">                        <label class="col-md-2 control-lable" for="email">Email</label>                        <div class="col-md-7 inp_ero">                            <input type="email" ng-model="ctrl.user.email" id="email" class="email form-control input-sm" placeholder="Enter your Email" required/>                        </div>                    </div>                </div>                <div class="row">                    <div class="form-group col-md-12">                        <label class="col-md-2 control-lable" for="exampleInputPassword1">Password</label>                        <div class="col-md-7 inp_ero">                            <input type="password" ng-model="ctrl.user.password" class="password form-control form-control input-sm" id="exampleInputPassword1" placeholder="Password" required ng-minlength="4">                        </div>                    </div>                </div>                <div class="row">                    <div class="form-group col-md-12">                        <label class="col-md-2 control-lable" for="number">Phone number</label>                        <div class="col-md-7 inp_ero">                            <input type="number" ng-model="ctrl.user.number" id="number" value="" class="number form-control input-sm" placeholder="Enter your phone number" required ng-minlength="12"/>                        </div>                    </div>                </div>                <div class="row">                    <div class="form-group col-md-12">                        <label class="col-md-2 control-lable" for="country">Country</label>                        <div class="col-md-7">                            <input type="text" ng-model="ctrl.user.country" id="country" class="country form-control input-sm" required placeholder="Enter your Country."/>                        </div>                    </div>                </div>                <div class="row">                    <div class="form-group col-md-12">                        <label class="col-md-2 control-lable" for="city">City</label>                        <div class="col-md-7">                            <input type="text" ng-model="ctrl.user.city" id="city" class=" city form-control input-sm" required placeholder="Enter your City."/>                        </div>                    </div>                </div>                <div class="row">                    <div class="container">                        <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-success btn-sm" ng-disabled="myForm.$invalid">                        <button type="button" ng-click="ctrl.reset()" class="btn btn-danger btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>                    </div>                </div>            </form>        </div>    </div>    <div class="panel panel-default">        <div class="panel-heading ">            <span class="lead">List of Users</span>        </div>        <div class="table container ">            <table class="table table-hover">                <thead>                <tr>                    <th>ID.</th>                    <th>Name</th>                    <th>Email</th>                    <th>Password</th>                    <th>Phone number</th>                    <th>Country</th>                    <th>City</th>                    <th width="100">                </tr>                </thead>                <tbody>                <tr ng-repeat="u in ctrl.users">                    <td><span ng-bind="u.id"></span></td>                    <td><span ng-bind="u.username"></span></td>                    <td><span ng-bind="u.email"></span></td>                    <td><span ng-bind="u.password"></span></td>                    <td><span ng-bind="u.number"></span></td>                    <td><span ng-bind="u.country"></span></td>                    <td><span ng-bind="u.city"></span></td>                    <td class="button container">                        <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-info custom-width">Edit</button>                        <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-warning custom-width">Remove</button>                    </td>                </tr>                </tbody>            </table>        </div>    </div>    <footer class="copy" >        <a href="https://www.linkedin.com/in/romanivankiv"  id="autor" target="_blank">&copy; Created by Ivankiv R.</a>    </footer></div><script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script><script src="script/app.js"></script></body></html>
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Registration</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/app.css">
+</head>
+<body data-ng-app="myApp" data-ng-controller="AppController as ctrl" data-ng-cloak>
+<div class="container">
+    <div class="panel panel cont-top">
+        <div class="panel-heading cont-bl">
+            <span class="lead">User Registration Form </span>
+        </div>
+        <div class="form cont">
+            <form ng-submit="ctrl.submit()" name="myForm" class="form_cont">
+                <input type="hidden" ng-model="ctrl.user.id" />
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="name">Name</label>
+                        <div class="col-md-7 inp_ero">
+                            <input type="text" ng-model="ctrl.user.username" id="name" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="email">Email</label>
+                        <div class="col-md-7 inp_ero">
+                            <input type="email" ng-model="ctrl.user.email" id="email" class="email form-control input-sm" placeholder="Enter your Email" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="exampleInputPassword1">Password</label>
+                        <div class="col-md-7 inp_ero">
+                            <input type="password" ng-model="ctrl.user.password" class="password form-control form-control input-sm" id="exampleInputPassword1" placeholder="Password" required ng-minlength="4">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="number">Phone number</label>
+                        <div class="col-md-7 inp_ero">
+                            <input type="number" ng-model="ctrl.user.number" id="number" value="" class="numbers-only number form-control input-sm" placeholder="Enter your phone number" required ng-minlength="12"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="country">Country</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.user.country" id="country" class="country form-control input-sm" required placeholder="Enter your Country."/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label class="col-md-2 control-lable" for="city">City</label>
+                        <div class="col-md-7">
+                            <input type="text" ng-model="ctrl.user.city" id="city" class=" city form-control input-sm" required placeholder="Enter your City."/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="container">
+                        <input type="submit"  value="{{!ctrl.user.id ? 'Add' : 'Update'}}" class="btn btn-success btn-sm" ng-disabled="myForm.$invalid">
+                        <button type="button" ng-click="ctrl.reset()" class="btn btn-danger btn-sm" ng-disabled="myForm.$pristine">Reset Form</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading ">
+            <span class="lead">List of Users</span>
+        </div>
+        <div class="table container ">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>ID.</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Phone number</th>
+                    <th>Country</th>
+                    <th>City</th>
+
+                    <th width="100">
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="u in ctrl.users">
+                    <td><span ng-bind="u.id"></span></td>
+                    <td><span ng-bind="u.username"></span></td>
+                    <td><span ng-bind="u.email"></span></td>
+                    <td><span ng-bind="u.password"></span></td>
+                    <td><span ng-bind="u.number"></span></td>
+                    <td><span ng-bind="u.country"></span></td>
+                    <td><span ng-bind="u.city"></span></td>
+                    <td class="button container">
+                        <button type="button" ng-click="ctrl.edit(u.id)" class="btn btn-info custom-width">Edit</button>
+                        <button type="button" ng-click="ctrl.remove(u.id)" class="btn btn-warning custom-width">Remove</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <footer class="copy" >
+        <a href="https://www.linkedin.com/in/romanivankiv"  id="autor" target="_blank">&copy; Created by Ivankiv R.</a>
+    </footer>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+<script src="script/app.js"></script>
+</body>
+</html>
