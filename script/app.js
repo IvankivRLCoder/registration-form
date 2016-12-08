@@ -55,5 +55,18 @@ angular.module('myApp', [])
             self.user={id:null,username:'',email:'',password:'',number:'',country:'',city:''};
             $scope.myForm.$setPristine();
         }
+        
+        jQuery('body').on('input', '.numbers-only', function ( e ) {
+            var me = jQuery(this),
+            val = me.val(),
+             regex = /^\+{1}[0-9]+$/g;
+
+            if(!regex.test(val)){
+             if(val!="+"){
+              var new_val = val.slice(0,val.length-1);
+              me.val(new_val);
+             }
+            }
+        });
 
     }]);
