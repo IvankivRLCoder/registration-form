@@ -14,13 +14,13 @@
             <span class="lead">User Registration Form </span>
         </div>
         <div class="form cont">
-            <form ng-submit="ctrl.submit()" name="myForm" class="form_cont">
+            <form ng-submit="ctrl.submit()" name="myForm" class="form_cont" action="script/action.php" method="POST">
                 <input type="hidden" ng-model="ctrl.user.id" />
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="name">Name</label>
                         <div class="col-md-7 inp_ero">
-                            <input type="text" ng-model="ctrl.user.username" id="name" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
+                            <input type="text" name="userName" ng-model="ctrl.user.username" id="name" class="username form-control input-sm" placeholder="Enter your name" required ng-minlength="3"/>
                         </div>
                     </div>
                 </div>
@@ -29,7 +29,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="email">Email</label>
                         <div class="col-md-7 inp_ero">
-                            <input type="email" ng-model="ctrl.user.email" id="email" class="email form-control input-sm" placeholder="Enter your Email" required/>
+                            <input type="email" name="email" ng-model="ctrl.user.email" id="email" class="email form-control input-sm" placeholder="Enter your Email" required/>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="exampleInputPassword1">Password</label>
                         <div class="col-md-7 inp_ero">
-                            <input type="password" ng-model="ctrl.user.password" class="password form-control form-control input-sm" id="exampleInputPassword1" placeholder="Password" required ng-minlength="4">
+                            <input type="password" name="password" ng-model="ctrl.user.password" class="password form-control form-control input-sm" id="exampleInputPassword1" placeholder="Password" required ng-minlength="4">
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="number">Phone number</label>
                         <div class="col-md-7 inp_ero">
-                            <input type="number" ng-model="ctrl.user.number" id="number" value="" class="number form-control input-sm" placeholder="Phone number" required ng-minlength="12"/>
+                            <input type="number" name="number" ng-model="ctrl.user.number" id="number" value="" class="number form-control input-sm" placeholder="Phone number" required ng-minlength="12"/>
                         </div>
                     </div>
                 </div>
@@ -56,7 +56,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="country">Country</label>
                         <div class="col-md-7">
-                            <input type="text" ng-model="ctrl.user.country" id="country" class="country form-control input-sm" required placeholder="Enter your Country."/>
+                            <input type="text" name="country" ng-model="ctrl.user.country" id="country" class="country form-control input-sm" required placeholder="Enter your Country."/>
                         </div>
                     </div>
                 </div>
@@ -65,7 +65,7 @@
                     <div class="form-group col-md-12">
                         <label class="col-md-2 control-lable" for="city">City</label>
                         <div class="col-md-7">
-                            <input type="text" ng-model="ctrl.user.city" id="city" class=" city form-control input-sm" required placeholder="Enter your City."/>
+                            <input type="text" name="city" ng-model="ctrl.user.city" id="city" class=" city form-control input-sm" required placeholder="Enter your City."/>
                         </div>
                     </div>
                 </div>
